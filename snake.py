@@ -10,6 +10,8 @@ Exercises
 #Import choice from the random library 
 from random import choice
 from random import randrange
+"Sample to choose diferents elements between a list"
+from random import sample
 from turtle import *
 
 from freegames import square, vector
@@ -18,9 +20,15 @@ food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
 
+"list of allowed colors"
+colors = ["blue", "green", "purple", "pink", "brown"]
+
+"Choose two colors"
+snake_color, food_color = sample(colors,2)
 
 def change(x, y):
     """Change snake direction."""
+
     aim.x = x
     aim.y = y
 
@@ -64,9 +72,9 @@ def move():
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
+        square(body.x, body.y, 9, snake_color)
 
-    square(food.x, food.y, 9, 'green')
+    square(food.x, food.y, 9, food_color)
     update()
     ontimer(move, 100)
 
